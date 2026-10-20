@@ -49,6 +49,13 @@ jobs:
       - run: brew test-bot --only-setup
 
       - run: brew test-bot --only-tap-syntax
+      # md-viewer's Linux binary links the system GTK/WebKitGTK, not Homebrew's
+      - name: Install md-viewer runtime libraries
+        if: runner.os == 'Linux' && github.event_name == 'pull_request'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libwebkit2gtk-4.1-0
+
       - run: brew test-bot --only-formulae
         if: github.event_name == 'pull_request'
 
