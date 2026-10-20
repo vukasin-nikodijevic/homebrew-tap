@@ -6,10 +6,18 @@ class MdViewer < Formula
   license "MIT"
 
   depends_on "go" => :build
-  depends_on :macos
+
+  on_linux do
+    depends_on "pkgconf" => :build
+    depends_on "glib"
+    depends_on "gtk+3"
+    depends_on "webkitgtk"
+  end
 
   def install
     ENV["CGO_ENABLED"] = "1"
+    # webview_go asks pkg-config for webkit2gtk-4.0; the repo's shim maps it to 4.1
+    ENV.prepend_path "PKG_CONFIG_PATH", buildpath/".pkg-config" if OS.linux?
     system "go", "build", *std_go_args(ldflags: "-s -w")
   end
 
