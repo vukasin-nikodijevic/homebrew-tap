@@ -1,8 +1,8 @@
 class MdViewer < Formula
   desc "Render Markdown files in a native window with GitHub styling"
   homepage "https://github.com/vukasin-nikodijevic/markdown-viewer"
-  url "https://github.com/vukasin-nikodijevic/markdown-viewer/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "d281c8c1f98d72e4432228320ed919a434fb435cac4970028ee1818c98add834"
+  url "https://github.com/vukasin-nikodijevic/markdown-viewer/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "4b8bf7c023c3d75e57a511ae2062637f4cf1f6964e03f52008b361db8ea45c34"
   license "MIT"
 
   depends_on "go" => :build
